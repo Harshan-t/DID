@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
 
-const Dashboard = () => {
+const FileUploader = () => {
     const [files, setFiles] = useState([]);
     const [isUploading, setIsUploading] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
-    const fileInputRef = useRef(null);
     const [userEmail, setUserEmail] = useState('');
     const [totalFiles, setTotalFiles] = useState(0);
     const [fileChosen, setFileChosen] = useState(false);
@@ -99,7 +98,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center text-[#F66435]'>
+        <div className='flex flex-col items-center justify-center text-[#b5b25c]'>
             <div className='flex flex-col justify-between items-start mt-[10vh]'>
                 <div className="flex justify-evenly mb-4 w-[60vw]">
                     <div className='flex flex-col w-[70vw]'>
@@ -110,7 +109,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="">
-                        <button className='bg-[#F66435] p-2 px-4 rounded-lg text-white cursor-pointer' >Upload</button>
+                        <button className='bg-[#b5b25c] p-2 px-4 rounded-lg text-white cursor-pointer' >Upload</button>
                     </div>
                 </div>
                 <div className='ml-1 mb-4'>
@@ -148,4 +147,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default FileUploader;
