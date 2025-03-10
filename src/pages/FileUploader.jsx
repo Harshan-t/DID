@@ -4,7 +4,6 @@ const Dashboard = () => {
     const [files, setFiles] = useState([]);
     const [isUploading, setIsUploading] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
-    const fileInputRef = useRef(null);
     const [userEmail, setUserEmail] = useState('');
     const [totalFiles, setTotalFiles] = useState(0);
     const [fileChosen, setFileChosen] = useState(false);
@@ -55,13 +54,22 @@ const Dashboard = () => {
                 })
             };
             setFiles(prev => [newFile, ...prev]);
-            setTotalFiles(prev => prev + 1);
         } catch (error) {
             console.error("File upload error:", error);
             setIsUploading(false);
             setUploadProgress(0);
         }
     };
+
+    const UpdateTotal = () => {
+        if (isUploading) {
+            setTotalFiles(prev => prev + 1);
+            setIsUploading(false);
+        }
+        setFileChosen(false);
+        setChosenFileName('');
+
+    }
 
     const formatFileSize = (bytes) => {
         if (bytes === 0) return '0 Bytes';
@@ -75,7 +83,6 @@ const Dashboard = () => {
 
     const uploadToIPFS = async (file) => {
         try {
-
             return "QmSomeIPFSHash";
         } catch (error) {
             console.error("Error uploading to IPFS:", error);
@@ -110,7 +117,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="">
-                        <button className='bg-[#F66435] p-2 px-4 rounded-lg text-white cursor-pointer' >Upload</button>
+                        <button className='bg-[#F66435] p-2 px-4 rounded-lg text-white cursor-pointer' onClick={UpdateTotal}>Upload</button>
                     </div>
                 </div>
                 <div className='ml-1 mb-4'>
@@ -124,7 +131,7 @@ const Dashboard = () => {
                         <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                             <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                 <svg className="w-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                 </svg>
                                 <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                                 <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
@@ -142,7 +149,15 @@ const Dashboard = () => {
                         Upload your first file to get started
                     </p>
                 </>)
-                : (<div></div>)
+                : (
+                    <div>
+                        {files.map((file) =>
+                            <div>
+                                {file.name}
+                            </div>
+                        )}
+                    </div>
+                )
             }
         </div>
     );
