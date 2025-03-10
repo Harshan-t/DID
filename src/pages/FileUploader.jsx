@@ -116,7 +116,7 @@ const FileUploader = () => {
                     <p className='mb-2'>Total Files: {totalFiles}</p>
                 </div>
             </div>
-            <div className='flex flex-col justify-center items-center justify-center w-[70vw] h-[300px] mt-6'>
+            <div className='flex flex-col  items-center justify-center w-[70vw] h-[300px] mt-6'>
                 <div className="p-8 rounded-lg text-center border border-gray-200 shadow-xl w-[70vw] h-[300px] flex flex-col items-center justify-center bg-white">
                     <div className="text-5xl mb-4">📁</div>
                     <div className="flex items-center justify-center w-full">
