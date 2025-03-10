@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-const Dashboard = () => {
+const FileUploader = () => {
     const [files, setFiles] = useState([]);
     const [isUploading, setIsUploading] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
@@ -106,7 +106,7 @@ const Dashboard = () => {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center text-[#F66435]'>
+        <div className='flex flex-col items-center justify-center text-[#b5b25c]'>
             <div className='flex flex-col justify-between items-start mt-[10vh]'>
                 <div className="flex justify-evenly mb-4 w-[60vw]">
                     <div className='flex flex-col w-[70vw]'>
@@ -124,7 +124,7 @@ const Dashboard = () => {
                     <p className='mb-2'>Total Files: {totalFiles}</p>
                 </div>
             </div>
-            <div className='flex flex-col justify-center items-center justify-center w-[70vw] h-[300px] mt-6'>
+            <div className='flex flex-col  items-center justify-center w-[70vw] h-[300px] mt-6'>
                 <div className="p-8 rounded-lg text-center border border-gray-200 shadow-xl w-[70vw] h-[300px] flex flex-col items-center justify-center bg-white">
                     <div className="text-5xl mb-4">📁</div>
                     <div className="flex items-center justify-center w-full">
@@ -163,4 +163,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default FileUploader;
