@@ -1,36 +1,20 @@
-// import React from 'react'
-
-// const Dashboard = () => {
-//   return (
-//     <div>Dashboard</div>
-//   )
-// }
-
-// export default Dashboard
-
-
 import React from "react";
+import Header from "../components/header";
 import Sidebar from "../components/sidebar";
-import { FaUser, FaMapMarkerAlt, FaClipboardCheck, FaTimesCircle } from "react-icons/fa";
-
 
 function Dashboard() {
-
-
-    return (
-        <div className="dashboard flex bg-gray-100 min-h-screen">
-            <Sidebar />
-            <div className="flex flex-col p-6 w-full lg:w-4/5">
-                <h2 className="text-3xl font-bold text-gray-700 mb-8">Dashboard</h2>
-
-
-
-                
-
-                
-            </div>
+  return (
+    <div className="flex flex-col bg-gray-100 min-h-screen">
+      <Header />
+      <div className="flex flex-1 py-1.5">
+        <Sidebar />
+        <div className="p-6 flex-1">
+          <h2 className="text-3xl font-bold text-gray-700 mb-8">Dashboard</h2>
+          
         </div>
-    );
+      </div>
+    </div>
+  );
 }
 
 export default Dashboard;
